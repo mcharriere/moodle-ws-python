@@ -243,6 +243,14 @@ class WS(object):
         params['groupids[0]'] = int(grp_id)
         return self.make_request(function, params)
 
+    @requires_auth
+    def core_user_get_users_by_field(self, field, value):
+        function = 'core_user_get_users_by_field'
+        params = {}
+        params['field'] = str(field)
+        params['values[0]'] = str(value)
+        return self.make_request(function, params)
+
     ## Constructors ##
     @requires_auth
     def get_WSUser(self):
