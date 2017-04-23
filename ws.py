@@ -251,6 +251,22 @@ class WS(object):
         params['values[0]'] = str(value)
         return self.make_request(function, params)
 
+    @requires_auth
+    def core_group_add_group_members(self, grp_id, usr_id):
+        function = 'core_group_add_group_members'
+        members = {(int(grp_id), int(usr_id))}
+        params = {}
+        params.update(self._build_tuple_array('members', members , keyname='groupid', valuename='userid'))
+        return self.make_request(function, params)
+
+    @requires_auth
+    def core_group_delete_group_members(self, grp_id, usr_id):
+        function = 'core_group_delete_group_members'
+        members = {(int(grp_id), int(usr_id))}
+        params = {}
+        params.update(self._build_tuple_array('members', members , keyname='groupid', valuename='userid'))
+        return self.make_request(function, params)
+
     ## Constructors ##
     @requires_auth
     def get_WSUser(self):
