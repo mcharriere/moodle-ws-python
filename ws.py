@@ -229,6 +229,20 @@ class WS(object):
         params['plugindata[files_filemanager]'] = int(file_mgr)
         return self.make_request(function, params)
 
+    @requires_auth
+    def core_group_get_course_groups(self, crs_id):
+        function = 'core_group_get_course_groups'
+        params = {}
+        params['courseid'] = int(crs_id)
+        return self.make_request(function, params)
+
+    @requires_auth
+    def core_group_get_group_members(self, grp_id):
+        function = 'core_group_get_group_members'
+        params = {}
+        params['groupids[0]'] = int(grp_id)
+        return self.make_request(function, params)
+
     ## Constructors ##
     @requires_auth
     def get_WSUser(self):
