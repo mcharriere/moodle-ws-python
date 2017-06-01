@@ -266,6 +266,13 @@ class WS(object):
         params = {}
         params.update(self._build_tuple_array('members', members , keyname='groupid', valuename='userid'))
         return self.make_request(function, params)
+    
+    @requires_auth
+    def core_course_get_contents(self, crs_id):
+        function = 'core_course_get_contents'
+        params = {}
+        params['courseid'] = int(crs_id)
+        return self.make_request(function, params)
 
     ## Constructors ##
     @requires_auth
